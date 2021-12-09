@@ -24,21 +24,12 @@
   import { Space } from 'ant-design-vue';
   import { useUserStore } from '/@/store/modules/user';
   import { navs as myNavs } from './constant';
-  import { usePermissioStore } from '/@/store/modules/permission';
 
   const store = useUserStore();
-  const permissioStore = usePermissioStore();
   const router = useRouter();
 
   const navs = ref(myNavs);
   const selectedKeys = ref<string[]>([]);
-
-  watchEffect(() => {
-    const modules = permissioStore.getModules;
-    if (modules.length && permissioStore.getIsAdmin === 0) {
-      navs.value = unref(navs).filter((n) => (n.auth ? modules.includes(n.auth) : true));
-    }
-  });
 
   watchEffect(() => {
     if (router.currentRoute) {

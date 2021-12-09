@@ -2,7 +2,7 @@
   "name": "vite-vue3-ts",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "a vite+vue3+pinia+typescript+ant-design-vue template",
+  "description": "a vite + vue3 + pinia + typescript + ant-design-vue template",
   "keywords": [
     "vite",
     "vue3",

@@ -1,16 +1,13 @@
 import { defineStore } from 'pinia';
 import { store } from '/@/store';
 import fetchApi from '/@/api/user';
-import fetchRoleApi from '/@/api/sys/role';
-import { PermissionAll } from '/@/api/sys/role/model';
 import { RouteRecordRaw } from 'vue-router';
 import constantRoutes, { accessRoutes, publicRoutes } from '/@/router/router.config';
-import { filterAsyncRoutes, filterModuleByAuths } from '/@/utils/permission';
+import { filterAsyncRoutes } from '/@/utils/permission';
 
 interface PermissioState {
   isGetUserInfo: boolean; // 是否获取过用户信息
   isAdmin: 0 | 1; // 是否为管理员
-  permission: PermissionAll; // 所有权限
   auths: string[]; // 当前用户权限
   modules: string[]; // 模块权限
 }
@@ -22,17 +19,12 @@ export const usePermissioStore = defineStore({
     isGetUserInfo: false,
     // isAdmin
     isAdmin: 0,
-    // permission all
-    permission: [],
     // auths
     auths: [],
     // modules
     modules: [],
   }),
   getters: {
-    getPermissionAll(): PermissionAll {
-      return this.permission;
-    },
     getAuths(): string[] {
       return this.auths;
     },
@@ -47,23 +39,18 @@ export const usePermissioStore = defineStore({
     },
   },
   actions: {
-    setAuth(auths: string[]) {
+    setAuth(auths: string[], modules: string[]) {
       this.auths = auths;
-      const modules = filterModuleByAuths(this.getAuths);
-      this.modules = modules;
       this.isGetUserInfo = true;
+      this.modules = modules;
     },
     setIsAdmin(isAdmin: 0 | 1) {
       this.isAdmin = isAdmin;
-    },
-    setPermission(permission: PermissionAll) {
-      this.permission = permission;
     },
     resetState() {
       this.isGetUserInfo = false;
       this.isAdmin = 0;
       this.auths = [];
-      this.permission = [];
       this.modules = [];
     },
 
@@ -74,34 +61,10 @@ export const usePermissioStore = defineStore({
     async fetchAuths() {
       const res = await fetchApi.permission();
       if (res) {
-        this.setAuth(res.auths);
+        this.setAuth(res.auths, res.modules);
         this.setIsAdmin(res.is_admin || 0);
       }
       return res;
-    },
-
-    /**
-     * @name fetchPermissionAll
-     * @description: 获取所有权限
-     */
-    async fetchPermissionAll() {
-      const res = await fetchRoleApi.permission_all();
-      if (res) {
-        // {key:value} ==> [{label:'',value:'}]
-        const result = res.list.map((n) => {
-          const auth_list = Object.keys(n.auth_list).map((key) => ({
-            label: n.auth_list[key],
-            value: key,
-          }));
-
-          return {
-            ...n,
-            auth_list,
-          };
-        });
-        //
-        this.setPermission(result);
-      }
     },
 
     /**

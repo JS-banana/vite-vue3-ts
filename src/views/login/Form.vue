@@ -2,8 +2,8 @@
   <div class="form_box">
     <a-form :model="formModel" :rules="rules" @finish="handleFinish">
       <p class="text">请输入手机号登录</p>
-      <a-form-item name="mobile">
-        <a-input class="reset-input" v-model:value="formModel.mobile">
+      <a-form-item name="username">
+        <a-input class="reset-input" v-model:value="formModel.username">
           <template #prefix>
             <!-- <user-outlined class="icon" type="user" /> -->
             <Icon size="24px" type="shoujihaodenglu" class="icon" />
@@ -33,7 +33,7 @@
         <a-button html-type="submit" class="btn" :loading="loading">立即登录</a-button>
       </a-form-item>
     </a-form>
-    <p class="copyright">由浙江数秦科技有限公司提供技术支持</p>
+    <p class="copyright">@copyright JS-banana</p>
   </div>
 </template>
 <script setup lang="ts">
@@ -73,13 +73,13 @@
   );
 
   const rules = {
-    mobile: [{ required: true, trigger: 'blur', message: '请输入手机号' }],
+    username: [{ required: true, trigger: 'blur', message: '请输入手机号' }],
     password: [{ required: true, trigger: 'blur', message: '请输入密码' }],
   };
 
   const checked = ref(true);
   const formModel = reactive({
-    mobile: '',
+    username: '',
     password: '',
   });
 
@@ -97,7 +97,7 @@
 </script>
 <style lang="less">
   .form_box {
-    margin-top: 60px;
+    margin-top: 40px;
     .btn {
       width: 100%;
       height: 54px;
@@ -140,7 +140,7 @@
       border-radius: 6px;
     }
     .copyright {
-      margin-top: 50px;
+      margin-top: 20px;
       font-size: 12px;
       color: #999999;
       opacity: 0.85;

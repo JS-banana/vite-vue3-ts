@@ -4,15 +4,15 @@ import { ResData } from '../api/global';
 import { getToken } from './auth';
 import { useUserStoreWithOut } from '../store/modules/user';
 import { useMessage } from '../hooks/useMessage';
-import { WhiteList } from './permission';
-import { usePermissioStoreWithOut } from '/@/store/modules/permission';
+// import { WhiteList } from './permission';
+// import { usePermissioStoreWithOut } from '/@/store/modules/permission';
 
 const { createMessage } = useMessage();
 // baseURL
-const BASE_URL = import.meta.env.MODE === 'development' ? API_PREFIX : '';
+// const BASE_URL = import.meta.env.MODE === 'development' ? API_PREFIX : '';
 
 const instance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: API_PREFIX,
   withCredentials: true,
   timeout: 10000,
 });
@@ -20,14 +20,14 @@ const instance = axios.create({
 instance.interceptors.request.use(
   (config) => {
     // 接口权限拦截
-    const store = usePermissioStoreWithOut();
-    const { url = '' } = config;
-    if (!WhiteList.includes(url) && store.getIsAdmin === 0) {
-      if (!store.getAuths.includes(url)) {
-        console.log('url', url, store.getIsAdmin);
-        return Promise.reject('没有操作权限');
-      }
-    }
+    // const store = usePermissioStoreWithOut();
+    // const { url = '' } = config;
+    // if (!WhiteList.includes(url) && store.getIsAdmin === 0) {
+    //   if (!store.getAuths.includes(url)) {
+    //     console.log('url', url, store.getIsAdmin);
+    //     return Promise.reject('没有操作权限');
+    //   }
+    // }
 
     // 请求头 token配置
     const token = getToken();

@@ -90,7 +90,7 @@
   const { title } = useBreadcrumbTitle();
 
   onMounted(() => {
-    permissioStore.fetchPermissionAll();
+    // permissioStore.fetchPermissionAll();
   });
 
   onUnmounted(() => {

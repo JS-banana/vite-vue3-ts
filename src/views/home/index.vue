@@ -30,15 +30,12 @@
       </a-col>
     </a-row>
     <a-divider class="line" />
-    <!--  -->
-    <TabInfo />
   </div>
 </template>
 <script setup lang="ts">
   import IconSerach from '/@/assets/images/Icon _Search.png';
   import DataOverview from './components/DataOverview.vue';
   import TradingHistory from './components/TradingHistory.vue';
-  import TabInfo from './components/TabInfo/index.vue';
   import { useChainBrowserStore } from '/@/store/modules/chainBrowser';
 
   const store = useChainBrowserStore();
