@@ -3,6 +3,9 @@
  * @description 项目配置
  */
 
+// 应用名
+export const APP_TITLE = 'vite-vue3-admin';
+
 // 本地服务端口
 export const VITE_PORT = 3000;
 

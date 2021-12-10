@@ -2,7 +2,7 @@ export const KeyValue = [
   {
     label: '用户名 :',
     value: '',
-    key: 'account',
+    key: 'username',
     isEdit: true,
   },
   {

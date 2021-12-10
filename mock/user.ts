@@ -14,6 +14,9 @@ export function createFakeUserList() {
       auths: [],
       modules: [],
       is_admin: 1,
+      role_name: '管理员角色',
+      mobile: 13000000000,
+      last_login: '2021-11-11 12:00',
     },
     {
       userId: '2',
@@ -24,8 +27,11 @@ export function createFakeUserList() {
       desc: 'tester',
       token: 'fakeToken2',
       auths: [],
-      modules: ['explorer', 'node'],
+      modules: ['home', 'nwebsiteode'],
       is_admin: 0,
+      role_name: '普通用户角色',
+      mobile: 18000000000,
+      last_login: '2021-11-11 12:12',
     },
   ];
 }
@@ -72,6 +78,19 @@ export default [
         return resultError('Invalid token!');
       }
       return resultSuccess(undefined, { message: 'Token has been destroyed' });
+    },
+  },
+  {
+    url: '/v1/account/info',
+    method: 'get',
+    response: (request: requestParams) => {
+      const token = getRequestToken(request);
+      if (!token) return resultError('Invalid token');
+      const checkUser = createFakeUserList().find((item) => item.token === token);
+      if (!checkUser) {
+        return resultError('The corresponding user information was not obtained!');
+      }
+      return resultSuccess(checkUser);
     },
   },
 ] as MockMethod[];

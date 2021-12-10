@@ -1,28 +1,28 @@
 <template>
   <div class="contract-conatiner">
     <div class="rowBC">
-      <h2 class="cc_title font18">合约管理</h2>
+      <h2 class="cc_title font18">导航栏一</h2>
       <a-button
         type="primary"
         v-auth="AuthEnum.contract_create"
         @click="$router.push('/app/contract/add')"
-        >新增合约</a-button
+        >新增</a-button
       >
     </div>
-    <Table :url="fetchApi.list" :columns="columns" :hiddenFilter="true" />
+    <!-- <Table :url="fetchApi.list" :columns="columns" :hiddenFilter="true" /> -->
   </div>
 </template>
 <script setup lang="ts">
-  import { columns } from './constant';
-  import fetchApi from '/@/api/contract';
-  import { useContractStore } from '/@/store/modules/contract';
+  // import { columns } from './constant';
+  // import fetchApi from '/@/api/contract';
+  // import { useContractStore } from '/@/store/modules/contract';
   import { AuthEnum } from '/@/enums/authEnum';
 
-  const store = useContractStore();
+  // const store = useContractStore();
 
-  onUnmounted(() => {
-    store.resetState();
-  });
+  // onUnmounted(() => {
+  //   store.resetState();
+  // });
 </script>
 <style lang="less" scoped>
   .contract-conatiner {

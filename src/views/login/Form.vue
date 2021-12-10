@@ -3,7 +3,11 @@
     <a-form :model="formModel" :rules="rules" @finish="handleFinish">
       <p class="text">请输入手机号登录</p>
       <a-form-item name="username">
-        <a-input class="reset-input" v-model:value="formModel.username">
+        <a-input
+          class="reset-input"
+          v-model:value="formModel.username"
+          placeholder="管理员：admin，普通：test"
+        >
           <template #prefix>
             <!-- <user-outlined class="icon" type="user" /> -->
             <Icon size="24px" type="shoujihaodenglu" class="icon" />
@@ -12,7 +16,12 @@
       </a-form-item>
       <p class="text">请输入密码</p>
       <a-form-item name="password">
-        <a-input class="reset-input" v-model:value="formModel.password" type="password">
+        <a-input
+          class="reset-input"
+          v-model:value="formModel.password"
+          type="password"
+          placeholder="密码为 123456"
+        >
           <template #prefix>
             <!-- <lock-outlined class="icon" /> -->
             <Icon size="24px" type="shurumimadenglu" class="icon" />
@@ -97,7 +106,7 @@
 </script>
 <style lang="less">
   .form_box {
-    margin-top: 40px;
+    margin-top: 30px;
     .btn {
       width: 100%;
       height: 54px;

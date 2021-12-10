@@ -28,8 +28,7 @@
     <template #menuHeaderRender>
       <router-link :to="{ path: '/' }">
         <img :src="logo" class="logo" />
-        <h1 class="title"> SimpleChain联盟链 </h1>
-        <span class="subTitle">基础版</span>
+        <h1 class="title"> {{ APP_TITLE }} </h1>
       </router-link>
     </template>
     <!-- rightContentRender -->
@@ -75,9 +74,10 @@
   import { clearMenuItem } from '@ant-design-vue/pro-layout';
   import RightContent from './components/RightContent.vue';
   import { LeftOutlined } from '@ant-design/icons-vue';
-  import logo from '/@/assets/images/nav_logo@2x.png';
+  import logo from '/@/assets/images/logo.png';
   import { usePermissioStore } from '/@/store/modules/permission';
   import { useBreadcrumbTitle } from '../hooks/useBreadcrumbTitle';
+  import { APP_TITLE } from '../../config/constant';
   import prolayoutSetting from './constant';
 
   import type { BasicLayoutProps } from '@ant-design-vue/pro-layout';

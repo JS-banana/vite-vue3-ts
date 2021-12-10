@@ -1,51 +1,64 @@
+import Mock from 'mockjs';
 import { resultSuccess } from './_util';
 
+const list = Mock.mock({
+  'items|30': [
+    {
+      id: '@id',
+      title: '@ctitle',
+      mobile: '@phone',
+      name: '@cname',
+      description: '@cparagraph',
+      created_at: '@datetime',
+      updated_at: '@datetime',
+      age: '@natural(10,50)',
+      color: '@color',
+      email: '@email',
+    },
+  ],
+});
+
 const data = {
-  block_sum: 42,
-  tx_sum: 87755,
-  contract_sum: 3,
+  hu_num: 42,
+  yun_num: 87755,
+  ce_num: 3,
   create_time: 1636352741,
+  online_num: 101,
+  total_num: 110,
   seven_days: [
     {
       id: 9,
-      block_sum: 7,
-      transaction_sum: 7,
+      num: 7,
       time: '20211130',
     },
     {
       id: 8,
-      block_sum: 1,
-      transaction_sum: 1,
+      num: 80,
       time: '20211129',
     },
     {
       id: 0,
-      block_sum: 0,
-      transaction_sum: 0,
+      num: 280,
       time: '20211128',
     },
     {
       id: 0,
-      block_sum: 0,
-      transaction_sum: 0,
+      num: 0,
       time: '20211127',
     },
     {
       id: 7,
-      block_sum: 2,
-      transaction_sum: 2,
+      num: 5,
       time: '20211126',
     },
     {
       id: 6,
-      block_sum: 2,
-      transaction_sum: 2,
+      num: 20,
       time: '20211125',
     },
     {
       id: 5,
-      block_sum: 7,
-      transaction_sum: 82779,
+      num: 5,
       time: '20211124',
     },
   ],
@@ -57,6 +70,20 @@ export default [
     method: 'get',
     response: () => {
       return resultSuccess(data);
+    },
+  },
+  {
+    url: '/v1/home/list',
+    method: 'get',
+    response: () => {
+      const items = list.items;
+      return {
+        code: 0,
+        result: {
+          total: items.length,
+          list: items,
+        },
+      };
     },
   },
 ];

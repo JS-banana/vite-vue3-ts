@@ -35,7 +35,9 @@
   import avatar from '/@/assets/images/avatar.png';
   import { KeyValue } from './constant';
   import { useSysAccountStore } from '/@/store/modules/sysAccount';
+  import { useMessage } from '/@/hooks/useMessage';
 
+  const { createMessage } = useMessage();
   const store = useSysAccountStore();
 
   const initVal = {
@@ -73,10 +75,12 @@
 
   const handleSubmit = async () => {
     const { key, value } = unref(modifyItem);
-    const params = { id: account.value!.user_id, [key]: value };
+    // const params = { id: account.value!.user_id, [key]: value };
     //
+    console.log('当前修改内容', { [key]: value });
     loading.value = true;
-    await store.fetchAccountUpdate(params);
+    // await store.fetchAccountUpdate(params);
+    createMessage.success(`当前修改内容为：{ ${key}: ${value} }`);
     loading.value = false;
     handleCancle();
   };

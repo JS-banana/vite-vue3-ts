@@ -24,35 +24,35 @@
   import img3 from '/@/assets/images/Icon_contract.png';
   import img4 from '/@/assets/images/Icon_node.png';
 
-  import { useChainBrowserStore } from '/@/store/modules/chainBrowser';
+  import { useHomeStore } from '/@/store/modules/home';
 
-  const store = useChainBrowserStore();
+  const store = useHomeStore();
 
   const data = ref([
     {
       img: img1,
-      label: '区块高度',
+      label: '胡杨',
       value: 0,
-      key: 'block_sum',
+      key: 'hu_num',
       bgColor: 'linear-gradient(90deg, #4394FF 0%, #60BBFD 100%)',
     },
     {
       img: img2,
-      label: '交易总数',
+      label: '云杉',
       value: 0,
-      key: 'tx_sum',
+      key: 'yun_num',
       bgColor: 'linear-gradient(90deg, #49C4D8 0%, #6DD2A2 100%)',
     },
     {
       img: img3,
-      label: '合约数',
+      label: '侧柏',
       value: 0,
-      key: 'contract_sum',
+      key: 'ce_num',
       bgColor: 'linear-gradient(90deg, #F48D6D 0%, #F9AC67 100%)',
     },
     {
       img: img4,
-      label: '正常/节点总数',
+      label: '正常/栽种总数',
       value: '0',
       key: 'total',
       bgColor: 'linear-gradient(90deg, #7E8BEC 0%, #C5AFF7 100%)',
@@ -60,15 +60,14 @@
   ]);
 
   watchEffect(() => {
-    if (store.getInfo && store.getNodeInfo) {
+    if (store.getInfo) {
       data.value = unref(data.value).map((n) => {
         let value = '0';
         if (n.key === 'total') {
-          value = `${store.getNodeInfo?.online_node_num}/${store.getNodeInfo?.total_node_num}`;
+          value = `${store.info?.online_num}/${store.info?.total_num}`;
         } else {
           value = store.getInfo?.[n.key] || '0';
         }
-
         return {
           ...n,
           value,

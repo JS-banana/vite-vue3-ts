@@ -1,10 +1,10 @@
 <template>
   <div class="tradingHistory">
     <div class="tradingHistory_header">
-      <h2 class="font18">交易历史</h2>
+      <h2 class="font18">栽种记录</h2>
       <p class="rowBC">
         <a-space>
-          <span>最近7天交易处理总量：</span>
+          <span>最近7天栽种植物总量：</span>
           <span class="font14_blue">{{ total }}</span>
         </a-space>
         <span>最近七天</span>
@@ -25,11 +25,11 @@
   import type { Ref } from 'vue';
   import echarts from '/@/utils/echarts';
   import { useECharts } from '/@/hooks/useECharts';
-  import { useChainBrowserStore } from '/@/store/modules/chainBrowser';
+  import { useHomeStore } from '/@/store/modules/home';
 
-  const store = useChainBrowserStore();
+  const store = useHomeStore();
   const dataSource = computed(() => store.getInfo?.seven_days || []);
-  const total = computed(() => store.getInfo?.tx_sum || 0);
+  const total = computed(() => store.getInfo?.total_num || 0);
 
   const props = defineProps({
     loading: Boolean,
@@ -74,7 +74,7 @@
         },
         series: [
           {
-            data: data.map((n) => n.transaction_sum),
+            data: data.map((n) => n.num),
             type: 'line',
             // symbolSize: 0,
             areaStyle: {

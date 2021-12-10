@@ -2,12 +2,7 @@
   <div>
     <!-- search -->
     <a-card>
-      <a-input-search
-        size="large"
-        class="search"
-        @search="onSearch"
-        placeholder="请输入区块高度、交易哈希、区块哈希"
-      >
+      <a-input-search size="large" class="search" @search="onSearch" placeholder="搜索仓库">
         <template #enterButton>
           <a-button style="width: 100px; height: 48px" class="search_btn" type="primary">
             <img :src="IconSerach" alt="" />
@@ -30,30 +25,31 @@
       </a-col>
     </a-row>
     <a-divider class="line" />
+    <Table :url="fetchApi.list" :columns="columns" :hiddenFilter="true" />
   </div>
 </template>
 <script setup lang="ts">
   import IconSerach from '/@/assets/images/Icon _Search.png';
   import DataOverview from './components/DataOverview.vue';
   import TradingHistory from './components/TradingHistory.vue';
-  import { useChainBrowserStore } from '/@/store/modules/chainBrowser';
+  import { columns } from './constant';
+  import fetchApi from '/@/api/home';
+  import { useHomeStore } from '/@/store/modules/home';
 
-  const store = useChainBrowserStore();
-
+  const store = useHomeStore();
   const loading = ref(false);
 
   onMounted(async () => {
     loading.value = true;
     await store.fetchInfo();
-    await store.fetchNodeInfo();
     loading.value = false;
   });
 
   onUnmounted(() => {
-    store.resetState();
+    // store.resetState();
   });
 
-  const onSearch = (val: string) => store.fetchSearch(val);
+  const onSearch = () => {};
 </script>
 <style lang="less" scoped>
   .search {

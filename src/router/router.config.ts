@@ -21,14 +21,14 @@ export const accessRoutes = [
         },
       },
       {
-        path: '/app/page1',
-        name: 'page1',
-        component: () => import('/@/views/page1/index.vue'),
+        path: '/app/website',
+        name: 'website',
+        component: () => import('/@/views/website/index.vue'),
         meta: {
-          title: '页面一',
+          title: '网站管理',
           keepAlive: true,
           icon: 'jiedianguanli',
-          auth: ['page1'],
+          auth: ['website'],
         },
       },
       {
@@ -37,7 +37,7 @@ export const accessRoutes = [
         component: () => import('/@/views/page2/index.vue'),
         redirect: '/app/page2/index',
         meta: {
-          title: '页面二',
+          title: '其他菜单',
           keepAlive: true,
           icon: 'heyueguanli',
           auth: ['page2'],
