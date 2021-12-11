@@ -1,0 +1,1 @@
+import{d as a,N as n,u,aC as p}from"./vendor.b98b9ed7.js";var c=a({setup(){const e=n(),o=u();return p(()=>{const{params:t,query:r}=e,{path:s}=t;o.replace({path:"/"+s,query:r})}),()=>""}});export{c as default};
