@@ -78,7 +78,7 @@
   import { usePermissioStore } from '/@/store/modules/permission';
   import { useBreadcrumbTitle } from '../hooks/useBreadcrumbTitle';
   import { APP_TITLE } from '../../config/constant';
-  import prolayoutSetting from './constant';
+  import prolayoutSetting, { onlySideMenuPath } from './constant';
 
   import type { BasicLayoutProps } from '@ant-design-vue/pro-layout';
   import type { RouteContextProps } from '@ant-design-vue/pro-layout';
@@ -96,8 +96,11 @@
   onUnmounted(() => {
     permissioStore.resetState();
   });
-
-  const menuData = clearMenuItem(router.getRoutes()).filter((n) => n.path.startsWith('/app/'));
+  // 标准写法参考官方文档 https://github.com/vueComponent/pro-layout
+  // 这里我是根据自身需求在导航栏菜单只展示指定路由
+  const menuData = clearMenuItem(router.getRoutes()).filter((n) =>
+    onlySideMenuPath.includes(n.path),
+  );
 
   const state = reactive<Omit<RouteContextProps, 'menuData'>>({
     collapsed: false, // default value

@@ -9,10 +9,10 @@ import { useMessage } from '../hooks/useMessage';
 
 const { createMessage } = useMessage();
 // baseURL
-// const BASE_URL = import.meta.env.MODE === 'development' ? API_PREFIX : '';
+const BASE_URL = import.meta.env.MODE === 'development' ? API_PREFIX : '';
 
 const instance = axios.create({
-  baseURL: API_PREFIX,
+  baseURL: BASE_URL,
   withCredentials: true,
   timeout: 10000,
 });

@@ -2,7 +2,7 @@ import BasicLayout from '/@/layouts/BasicLayout.vue';
 import BlankLayout from '/@/layouts/BlankLayout.vue';
 import type { RouteRecordRaw } from 'vue-router';
 
-export const accessRoutes = [
+export const accessRoutes: RouteRecordRaw[] = [
   {
     path: '/app',
     name: 'app',
@@ -32,16 +32,29 @@ export const accessRoutes = [
         },
       },
       {
-        path: '/app/page2',
-        name: 'page2',
-        component: () => import('/@/views/page2/index.vue'),
-        redirect: '/app/page2/index',
+        path: '/app/others',
+        name: 'others',
+        component: BlankLayout,
+        // redirect: '/app/others/index',
         meta: {
           title: '其他菜单',
-          keepAlive: true,
-          icon: 'heyueguanli',
-          auth: ['page2'],
+          icon: 'xitongrizhi',
+          auth: ['others'],
         },
+        children: [
+          {
+            path: '/app/others/about',
+            name: 'about',
+            component: () => import('/@/views/others/about/index.vue'),
+            meta: { title: '关于', keepAlive: true, breadcrumb: true },
+          },
+          {
+            path: '/app/others/antdv',
+            name: 'antdv',
+            component: () => import('/@/views/others/antdv/index.vue'),
+            meta: { title: '组件', keepAlive: true, breadcrumb: true },
+          },
+        ],
       },
       {
         path: '/sys/account',

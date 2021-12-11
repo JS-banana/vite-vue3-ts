@@ -31,3 +31,5 @@ const prolayoutSetting: Omit<BasicLayoutProps, 'menuData'> = {
   iconfontUrl: ICONFONTURL,
 };
 export default prolayoutSetting;
+
+export const onlySideMenuPath = ['/app/home', '/app/website', '/app/others'];

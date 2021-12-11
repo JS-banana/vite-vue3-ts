@@ -19,6 +19,7 @@
       :pagination="pagination"
       :loading="loading"
       @change="handleTableChange"
+      :scroll="scroll"
     >
       <!-- slot 写法自定义 操作列 -->
       <!-- <template #[item]="data" v-for="item in Object.keys($slots)" :key="item">
@@ -71,6 +72,7 @@
       'items' /* Filter筛选列组件：包含的项 */,
       'model' /* Filter筛选列组件：form model */,
       'resKey',
+      'scroll',
     ],
     // emits: ['onSearch'],
     setup(props) {

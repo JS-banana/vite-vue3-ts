@@ -24,20 +24,4 @@ export enum AuthEnum {
   role_update = '/v1/role/update',
   // 删除角色
   role_delete = '/v1/role/delete',
-
-  /**
-   * 合约管理
-   */
-  // 新增合约
-  contract_create = '/v1/contract/deploy',
-  // 查看详情
-  contract_detail = '/v1/contract/detail',
-
-  /**
-   * 浏览器
-   */
-  // 区块信息
-  explorer_blockList = '/v1/explorer/block',
-  // 交易信息
-  explorer_transactionList = '/v1/explorer/transactionListByAllBlock',
 }

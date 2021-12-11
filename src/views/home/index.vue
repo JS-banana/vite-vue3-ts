@@ -25,7 +25,7 @@
       </a-col>
     </a-row>
     <a-divider class="line" />
-    <Table :url="fetchApi.list" :columns="columns" :hiddenFilter="true" />
+    <Table :url="fetchApi.list" :columns="columns" :hiddenFilter="true" :scroll="{ x: 1200 }" />
   </div>
 </template>
 <script setup lang="ts">

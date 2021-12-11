@@ -9,9 +9,13 @@ export function configMockPlugin(isBuild: boolean) {
     ignore: /^\_/,
     mockPath: 'mock',
     localEnabled: !isBuild,
-    prodEnabled: true,
+    prodEnabled: isBuild, // 为了演示，线上开启 mock
+    // 开发环境无需关系
+    // injectCode 只受prodEnabled影响
+    // https://github.com/anncwb/vite-plugin-mock/issues/9
+    // 下面这段代码会被注入 main.ts
     injectCode: `
-       import { setupProdMockServer } from '../mock/_createProductionServer';
+       import { setupProdMockServer } from '../mock/_createProdMockServer';
  
        setupProdMockServer();
        `,

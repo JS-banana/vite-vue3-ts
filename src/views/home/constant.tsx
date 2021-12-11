@@ -13,17 +13,6 @@ export const columns: ColumnProps[] = [
     width: 80,
   },
   {
-    title: '描述',
-    dataIndex: 'description',
-    width: 180,
-    ellipsis: true,
-    customRender: ({ text }) => (
-      <Tooltip placement="topLeft" title={text}>
-        {text}
-      </Tooltip>
-    ),
-  },
-  {
     title: '创建日期',
     dataIndex: 'created_at',
     slots: { customRender: 'toDateTime' },
@@ -41,9 +30,21 @@ export const columns: ColumnProps[] = [
     width: 150,
   },
   {
+    title: '描述',
+    dataIndex: 'description',
+    // width: 180,
+    ellipsis: true,
+    customRender: ({ text }) => (
+      <Tooltip placement="topLeft" title={text}>
+        {text}
+      </Tooltip>
+    ),
+  },
+  {
     title: '颜色',
     dataIndex: 'color',
     width: 100,
     customRender: ({ text }) => <Tag color={text}>{text}</Tag>,
+    fixed: 'right',
   },
 ];
