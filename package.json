@@ -28,6 +28,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:check":"vue-tsc --noEmit && vite build",
+    "build:github":"vite build --base=/vite-vue3-ts/",
     "build:no-cache": "yarn clean:cache && npm run build",
     "preview": "vite preview",
     "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
