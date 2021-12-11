@@ -2,7 +2,7 @@
   <div>
     <!-- search -->
     <a-card>
-      <a-input-search size="large" class="search" @search="onSearch" placeholder="搜索仓库">
+      <a-input-search size="large" class="search" @search="onSearch" placeholder="搜索一个小树苗~">
         <template #enterButton>
           <a-button style="width: 100px; height: 48px" class="search_btn" type="primary">
             <img :src="IconSerach" alt="" />
@@ -46,7 +46,7 @@
   });
 
   onUnmounted(() => {
-    // store.resetState();
+    store.resetState();
   });
 
   const onSearch = () => {};

@@ -67,7 +67,7 @@
         emit('onSearch');
       };
 
-      onMounted(() => console.log(`hiddenFilter`, props.hiddenFilter));
+      // onMounted(() => console.log(`hiddenFilter`, props.hiddenFilter));
 
       const hasHidden = ref(props.hiddenFilter);
 

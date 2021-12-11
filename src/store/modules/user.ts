@@ -54,9 +54,11 @@ export const useUserStore = defineStore({
      * @description: logout
      */
     async logout() {
-      this.setToken('');
+      this.resetState();
       removeToken();
       router.replace('/login');
+      // 路由表重置
+      location.reload();
     },
   },
 });

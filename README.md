@@ -68,3 +68,13 @@
 ├── tsconfig.json                       // typescript配置文件
 └── vite.config.ts                      // vite
 ```
+
+## 效果图
+
+![vite-vue3-3](https://cdn.jsdelivr.net/gh/JS-banana/images/vuepress/vite-vue3-3.jpg)
+
+![vite-vue3-4](https://cdn.jsdelivr.net/gh/JS-banana/images/vuepress/vite-vue3-4.jpg)
+
+## Stats
+
+![Alt](https://repobeats.axiom.co/api/embed/cdac2c29a0f5ec5acdca6468d15c57cc3567d3a2.svg)

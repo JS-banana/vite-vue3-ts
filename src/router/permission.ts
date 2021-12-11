@@ -8,7 +8,6 @@ import { getToken } from '../utils/auth';
 import { usePermissioStoreWithOut } from '/@/store/modules/permission';
 
 const permissioStore = usePermissioStoreWithOut();
-
 const whiteList = ['/login']; // no redirect whitelist
 
 router.beforeEach(async (to: any, _, next) => {
@@ -31,7 +30,6 @@ router.beforeEach(async (to: any, _, next) => {
         routes.forEach((route) => {
           router.addRoute(route);
         });
-        console.log('routes', routes);
         // hack 方法
         // 不使用 next() 是因为，在执行完 router.addRoute 后，
         // 原本的路由表内还没有添加进去的路由，会 No match
@@ -44,7 +42,7 @@ router.beforeEach(async (to: any, _, next) => {
     if (whiteList.indexOf(to.path) !== -1) {
       next();
     } else {
-      next(`/login?redirect=${to.path}`);
+      next('/login');
     }
   }
 });
