@@ -4,7 +4,7 @@
  */
 
 // 应用名
-export const APP_TITLE = 'vite-vue3-admin';
+export const APP_TITLE = 'Vite-Vue3-Admin';
 
 // 本地服务端口
 export const VITE_PORT = 3000;
@@ -21,7 +21,6 @@ export const MOCK_API_BASE_URL = '/mock/api';
 export const MOCK_API_TARGET_URL = 'http://localhost:3000';
 
 // iconfontUrl
-// export const ICONFONTURL = '//at.alicdn.com/t/font_2927003_tz5qryon1k.js';
 export const ICONFONTURL = '//at.alicdn.com/t/font_3004192_9jmc1z9neiw.js'; // 去色版
 
 // 包依赖分析

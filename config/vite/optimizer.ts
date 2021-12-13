@@ -1,3 +1,8 @@
+/**
+ * @name configManualChunk
+ * @description chunk 拆包优化
+ */
+
 const vendorLibs: { match: string[]; output: string }[] = [
   {
     match: ['ant-design-vue'],

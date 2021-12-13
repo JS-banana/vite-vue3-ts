@@ -25,7 +25,7 @@
     accept: {
       type: String,
       default: () => {
-        return '.sol';
+        return '.doc';
       },
     },
     size: {
@@ -44,7 +44,7 @@
     headers: {
       Authorization: localStorage.getItem('x-auth-token'),
     },
-    action: location.origin + '/api/v1/contract/upload',
+    action: location.origin + '/api/v1/upload',
   });
 
   const fileList = ref([]);
