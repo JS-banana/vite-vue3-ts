@@ -1,4 +1,4 @@
-import BasicLayout from '/@/layouts/BasicLayout.vue';
+import BasicLayout from '/@/layouts/BasicLayout/index.vue';
 import BlankLayout from '/@/layouts/BlankLayout.vue';
 import type { RouteRecordRaw } from 'vue-router';
 
@@ -46,13 +46,13 @@ export const accessRoutes: RouteRecordRaw[] = [
             path: '/app/others/about',
             name: 'about',
             component: () => import('/@/views/others/about/index.vue'),
-            meta: { title: '关于', keepAlive: true, hideInMenu: true, hiddenWrap: true },
+            meta: { title: '关于', keepAlive: true, hiddenWrap: true },
           },
           {
             path: '/app/others/antdv',
             name: 'antdv',
             component: () => import('/@/views/others/antdv/index.vue'),
-            meta: { title: '组件', keepAlive: true, breadcrumb: true, hideInMenu: true },
+            meta: { title: '组件', keepAlive: true, breadcrumb: true },
           },
         ],
       },

@@ -1,0 +1,27 @@
+.my-sideMenu-sider {
+  &_logo {
+    margin: 16px 0;
+    padding: 0 16px;
+    height: 23px;
+    overflow: hidden;
+  }
+  &_menu {
+    flex: 1 1 0%;
+    height: calc(100% - 55px);
+    overflow: hidden auto;
+  }
+  &_footer {
+    border-top: 1px solid #f0f0f0;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 40px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    .trigger:hover {
+      color: #3860f4;
+    }
+  }
+}

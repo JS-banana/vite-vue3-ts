@@ -1,8 +1,12 @@
 const vendorLibs: { match: string[]; output: string }[] = [
-  // {
-  //   match: ['xlsx'],
-  //   output: 'xlsx',
-  // },
+  {
+    match: ['ant-design-vue'],
+    output: 'antdv',
+  },
+  {
+    match: ['echarts'],
+    output: 'echarts',
+  },
 ];
 
 // @ts-ignore

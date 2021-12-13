@@ -55,7 +55,7 @@ instance.interceptors.response.use(
     }
 
     // 登录失效
-    if (res.code === 401) {
+    if (res.code === -1) {
       useUserStoreWithOut().logout();
     }
 
