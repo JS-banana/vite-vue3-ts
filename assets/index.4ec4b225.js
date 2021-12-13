@@ -1,0 +1,1 @@
+import{d as s,X as n,u,aH as p}from"./vendor.928f869a.js";var d=s({setup(){const e=n(),o=u();return p(()=>{const{params:t,query:r}=e,{path:a}=t;o.replace({path:"/"+a,query:r})}),()=>""}});export{d as default};
