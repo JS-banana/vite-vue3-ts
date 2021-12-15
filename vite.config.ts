@@ -4,6 +4,7 @@ import { createVitePlugins } from './config/vite/plugin';
 import proxy from './config/vite/proxy';
 import { VITE_DROP_CONSOLE, VITE_PORT } from './config/constant';
 import { generateModifyVars } from './config/themeConfig';
+import { configManualChunk } from './config/vite/optimizer';
 
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir);
@@ -58,11 +59,11 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           drop_console: VITE_DROP_CONSOLE,
         },
       },
-      // rollupOptions: {
-      //   output: {
-      //     manualChunks: configManualChunk,
-      //   },
-      // },
+      rollupOptions: {
+        output: {
+          manualChunks: configManualChunk,
+        },
+      },
       // Turning off brotliSize display can slightly reduce packaging time
       brotliSize: false,
       chunkSizeWarningLimit: 2000,
