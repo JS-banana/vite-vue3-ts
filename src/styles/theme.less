@@ -1,0 +1,19 @@
+// 主题换肤
+
+:root {
+  --page-bg: #fff;
+  --title-color: #111827;
+}
+
+.theme-dark {
+  --page-bg: #111827;
+  --title-color: #f3f4f6;
+}
+
+/* class 类，颜色值以 var 通过变量的形式使用 */
+.page__bg {
+  background-color: var(--page-bg);
+}
+.post__title {
+  color: var(--title-color);
+}

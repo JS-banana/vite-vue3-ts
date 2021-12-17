@@ -32,6 +32,16 @@ export const accessRoutes: RouteRecordRaw[] = [
         },
       },
       {
+        path: '/app/theme',
+        name: 'theme',
+        component: () => import('/@/views/theme/index.vue'),
+        meta: {
+          title: '主题换肤',
+          keepAlive: true,
+          icon: 'jiedianguanli',
+        },
+      },
+      {
         path: '/app/others',
         name: 'others',
         component: BlankLayout,
