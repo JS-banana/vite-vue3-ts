@@ -22,7 +22,7 @@
 - [ ] 主题换肤功能
 - [ ] 引入 `tailwindcss`
 - [ ] `ant-design-vue` 升级到 3.x版本
-- [ ] 调整环境变量配置文件为 `.env`/`.env.development`/`.env.production`
+- [ ] 调整环境变量配置为 `.env`/`.env.development`/`.env.production`
 
 ## 项目目录
 
