@@ -1,5 +1,7 @@
 # vite-vue3-ts
 
+[![ci](https://github.com/JS-banana/vite-vue3-ts/actions/workflows/deploy.yml/badge.svg)](https://github.com/JS-banana/vite-vue3-ts/actions/workflows/deploy.yml)
+
 ## 介绍
 
 一个使用 `vite` + `vue3` + `pinia` + `ant-design-vue` + `typescript` 完整技术路线开发的项目，秒级开发更新启动、新的`vue3 composition api` 结合 `setup`纵享丝滑般的开发体验、全新的 `pinia`状态管理器和优秀的设计体验（`1k`的size）、`antd`无障碍过渡使用UI组件库 `ant-design-vue`、安全高效的 `typescript`类型支持、代码规范验证、多级别的权限管理~
