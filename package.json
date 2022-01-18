@@ -26,6 +26,8 @@
     "check": "vue-tsc --noEmit",
     "serve": "npm run dev",
     "dev": "vite",
+    "dev:development": "vite --mode development",
+    "build:production": "vue-tsc --noEmit && vite build --mode production",
     "build": "vite build",
     "build:check": "vue-tsc --noEmit && vite build",
     "build:github": "vite build --base=/vite-vue3-ts/",

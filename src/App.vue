@@ -17,4 +17,6 @@
   moment.locale('zh_CN');
 
   useTitle();
+
+  console.log('my config env: ', import.meta.env);
 </script>
