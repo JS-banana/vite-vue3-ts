@@ -80,6 +80,12 @@
 └── vite.config.ts                      // vite
 ```
 
+## 更新记录
+
+- 2022.03.09
+  - 为了优化服务器构建，移除 `auto-imports.d.ts`、`components.d.ts`的git记录，加入`.gitignore`
+  - 域名二级目录的路由配置优化 `history: createWebHashHistory(import.meta.env.BASE_URL)`
+
 ## 效果图
 
 ![vite-vue3-3](https://cdn.jsdelivr.net/gh/JS-banana/images/vuepress/vite-vue3-3.jpg)
