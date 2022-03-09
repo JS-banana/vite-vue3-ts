@@ -21,13 +21,6 @@
 - ✊依赖按需加载：**unplugin-auto-import**，可自动导入使用到的`vue`、`vue-router`等依赖
 - 💪组件按需导入：**unplugin-vue-components**，无论是第三方UI组件还是自定义组件都可实现自动按需导入以及`TS`语法提示
 
-## 计划
-
-- [ ] 主题换肤功能
-- [ ] 引入 `tailwindcss`
-- [ ] `ant-design-vue` 升级到 3.x版本
-- [x] 调整环境变量配置为 `.env`/`.env.development`/`.env.production`
-
 ## 项目目录
 
 ```js
@@ -80,17 +73,26 @@
 └── vite.config.ts                      // vite
 ```
 
-## 更新记录
-
-- 2022.03.09
-  - 为了优化服务器构建，移除 `auto-imports.d.ts`、`components.d.ts`的git记录，加入`.gitignore`
-  - 域名二级目录的路由配置优化 `history: createWebHashHistory(import.meta.env.BASE_URL)`
-
 ## 效果图
 
 ![vite-vue3-3](https://cdn.jsdelivr.net/gh/JS-banana/images/vuepress/vite-vue3-3.jpg)
 
 ![vite-vue3-4](https://cdn.jsdelivr.net/gh/JS-banana/images/vuepress/vite-vue3-4.jpg)
+
+## 更新记录
+
+- 2022.01.18
+  - 增加环境变量配置文件 `.env`/`.env.development`/`.env.production`
+- 2022.03.09
+  - 为了优化服务器构建，移除 `auto-imports.d.ts`、`components.d.ts`的git记录，加入`.gitignore`
+  - 域名二级目录的路由配置优化 `history: createWebHistory(import.meta.env.BASE_URL)`
+  - 路由模式由 hash调整为 history
+
+## 计划
+
+- [ ] 主题换肤功能
+- [ ] 引入 `tailwindcss`
+- [ ] `ant-design-vue` 升级到 3.x版本
 
 ## Stats
 
