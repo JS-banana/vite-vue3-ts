@@ -94,6 +94,6 @@
 - [ ] 引入 `tailwindcss`
 - [ ] `ant-design-vue` 升级到 3.x版本
 
-## Stats
+## 感谢star
 
-![Alt](https://repobeats.axiom.co/api/embed/cdac2c29a0f5ec5acdca6468d15c57cc3567d3a2.svg)
+[![Stargazers over time](https://starchart.cc/JS-banana/vite-vue3-ts.svg)](https://starchart.cc/JS-banana/vite-vue3-ts)
