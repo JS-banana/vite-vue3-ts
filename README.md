@@ -87,6 +87,9 @@
   - 为了优化服务器构建，移除 `auto-imports.d.ts`、`components.d.ts`的git记录，加入`.gitignore`
   - 域名二级目录的路由配置优化 `history: createWebHistory(import.meta.env.BASE_URL)`
   - 路由模式由 hash调整为 history
+- 2022.05.07
+  - 添加路由动效`transition`，优化用户体验，并抽离封装`Breadcrumb`组件
+  - 添加权限指令`v-role`，调整权限逻辑，`Table`相关组件有所改动（配合该篇文章食用[多级别权限设计思考及实战](https://ssscode.com/pages/ff7971/)）
 
 ## 计划
 
