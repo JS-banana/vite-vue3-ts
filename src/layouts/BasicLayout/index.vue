@@ -5,19 +5,7 @@
       <SideMenu v-bind="layoutConf" />
       <a-layout class="basicLayout-content">
         <!-- breadcrumb -->
-        <a-card v-if="routeMeta.breadcrumb">
-          <a-breadcrumb :routes="breadcrumb">
-            <template #itemRender="{ route }">
-              <span class="font14 color-666">
-                {{ route.breadcrumbName }}
-              </span>
-            </template>
-          </a-breadcrumb>
-          <h2 class="font18 marT13 rowSC link" @click="handleBreadcrumb">
-            <LeftOutlined />
-            <span class="marL10">{{ title }}</span>
-          </h2>
-        </a-card>
+        <Breadcrumb v-if="routeMeta.breadcrumb" @handleClick="handleBreadcrumb" />
 
         <!-- content -->
         <a-layout-content>
@@ -26,14 +14,23 @@
           <!-- router-view -->
           <template v-if="routeMeta.hiddenWrap">
             <!-- <router-view /> -->
-            <router-view v-slot="{ Component }">
-              <component :is="Component" />
+            <router-view v-slot="{ Component, route }">
+              <transition name="fade-slide" mode="out-in" appear>
+                <!-- https://www.jianshu.com/p/399667ec9ef8 -->
+                <div :key="route.name">
+                  <component :is="Component" />
+                </div>
+              </transition>
             </router-view>
           </template>
           <a-card v-else>
             <!-- <router-view /> -->
-            <router-view v-slot="{ Component }">
-              <component :is="Component" />
+            <router-view v-slot="{ Component, route }">
+              <transition name="fade-slide" mode="out-in" appear>
+                <div :key="route.name">
+                  <component :is="Component" />
+                </div>
+              </transition>
             </router-view>
           </a-card>
         </a-layout-content>
@@ -42,15 +39,12 @@
   </a-layout>
 </template>
 <script setup lang="ts">
-  import { LeftOutlined } from '@ant-design/icons-vue';
   import { Route } from 'ant-design-vue/es/breadcrumb/Breadcrumb';
   import Header from './components/Header.vue';
   import SideMenu from './components/SideMenu';
-  import { useBreadcrumbTitle } from '/@/hooks/useBreadcrumbTitle';
   import { clearMenuItem, filterRoutes } from './utils';
 
   const router = useRouter();
-  const { title } = useBreadcrumbTitle();
 
   const menuData = filterRoutes(
     clearMenuItem(router.getRoutes()).filter((n) => n.path.startsWith('/app/')),
