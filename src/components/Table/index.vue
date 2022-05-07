@@ -43,6 +43,7 @@
           >
             <a @click.prevent="() => {}" :type="action.type">{{ action.label }}</a>
           </a-popconfirm>
+          <span v-else-if="!action.permission">——</span>
           <!-- 按钮 -->
           <a v-else @click="action?.onClick(record)" :type="action.type">{{ action.label }}</a>
           <!-- 分割线 -->
@@ -58,6 +59,7 @@
   import { usePagination } from 'vue-request';
   import { formatToDate, formatToDateTime } from '/@/utils/dateUtil';
   import { usePermission } from '/@/hooks/usePermission';
+  import { useRole } from '/@/hooks/useRole';
 
   // const req = () => new Promise((resolve) => resolve({ total: 0, list: [] }));
 
@@ -77,6 +79,7 @@
     // emits: ['onSearch'],
     setup(props) {
       const { hasPermission } = usePermission();
+      const { hasRole } = useRole();
       const {
         data: dataSource,
         run,
@@ -120,17 +123,20 @@
 
       // action 操作列
       const getActions = computed(() => {
-        return (toRaw(props.actions) || [])
-          .filter((action) => hasPermission(action.auth))
-          .map((action) => {
-            const { popConfirm } = action;
-            return {
-              type: 'link',
-              ...action,
-              ...(popConfirm || {}),
-              enable: !!popConfirm,
-            };
-          });
+        return (
+          (toRaw(props.actions) || [])
+            // .filter((action) => hasPermission(action.auth))
+            .map((action) => {
+              const { popConfirm } = action;
+              return {
+                type: 'link',
+                ...action,
+                ...(popConfirm || {}),
+                enable: !!popConfirm,
+                permission: hasPermission(action.auth) && hasRole(action.role),
+              };
+            })
+        );
       });
 
       // filter

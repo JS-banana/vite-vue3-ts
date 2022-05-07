@@ -10,6 +10,7 @@ interface PermissioState {
   isAdmin: 0 | 1; // 是否为管理员
   auths: string[]; // 当前用户权限
   modules: string[]; // 模块权限
+  role: 0 | 1;
 }
 
 export const usePermissioStore = defineStore({
@@ -23,10 +24,15 @@ export const usePermissioStore = defineStore({
     auths: [],
     // modules
     modules: [],
+    // role 0-银行 1-银保监
+    role: 0,
   }),
   getters: {
     getAuths(): string[] {
       return this.auths;
+    },
+    getRole(): 0 | 1 {
+      return this.role;
     },
     getModules(): string[] {
       return this.modules;
@@ -52,6 +58,7 @@ export const usePermissioStore = defineStore({
       this.isAdmin = 0;
       this.auths = [];
       this.modules = [];
+      this.role = 0;
     },
 
     /**
@@ -88,6 +95,36 @@ export const usePermissioStore = defineStore({
 
       return routes;
     },
+
+    // /**
+    //  * @name buildRoutesAction
+    //  * @description: 获取路由
+    //  */
+    // buildRoutesAction(): RouteRecordRaw[] {
+    //   // this.isGetUserInfo = true;
+    //   this.setIsGetUserInfo(true);
+
+    //   // 404 路由一定要放在 权限路由后面
+    //   let routes: RouteRecordRaw[] = [...constantRoutes, ...accessRoutes, ...publicRoutes];
+
+    //   // 1. 角色权限过滤：0-银行 1-银保监
+    //   let filterRoutes = filterRouteByRole(cloneDeep(accessRoutes), this.role);
+    //   // let filterRoutes = routes;
+
+    //   // 2. 菜单权限过滤：
+    //   // 管理员直接跳过
+    //   if (this.getIsAdmin === 0) {
+    //     const filterRoutesByAuth = filterAsyncRoutes(cloneDeep(filterRoutes), this.modules);
+    //     filterRoutes = filterRoutesByAuth;
+    //   }
+
+    //   // 普通用户
+    //   // 1. 方案一：过滤每个路由模块涉及的接口权限，判断是否展示该路由
+    //   // 2. 方案二：直接检索接口权限列表是否包含该路由模块，不做细分，axios同一拦截
+    //   routes = [...constantRoutes, ...filterRoutes, ...publicRoutes];
+
+    //   return routes;
+    // },
   },
 });
 

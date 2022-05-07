@@ -4,7 +4,10 @@
       <a-row type="flex">
         <a-col v-if="button" flex="100px">
           <span class="text" v-if="button.type === 'text'">{{ button.label }}</span>
-          <a-button v-else v-bind="button" v-auth="button.auth" @click="button?.onClick">{{
+          <!-- <a-button v-else v-bind="button" v-auth="button.auth" @click="button?.onClick">{{
+            button.label
+          }}</a-button> -->
+          <a-button v-if="getButton.permission" v-bind="button" @click="button?.onClick">{{
             button.label
           }}</a-button>
         </a-col>
@@ -47,11 +50,17 @@
   </a-card>
 </template>
 <script lang="ts">
+  import { usePermission } from '/@/hooks/usePermission';
+  import { useRole } from '/@/hooks/useRole';
+
   export default defineComponent({
     props: ['hiddenFilter', 'button', 'items', 'model'],
     emits: ['onSearch'],
 
     setup(props, { emit }) {
+      const { hasPermission } = usePermission();
+      const { hasRole } = useRole();
+
       const formModel = reactive(props.model || {});
 
       const getItems = computed(() => {
@@ -78,10 +87,19 @@
         }
       });
 
+      const getButton = computed(() => {
+        const plainObj = toRaw(props.button) || {};
+        return {
+          ...plainObj,
+          permission: hasPermission(plainObj.auth) && hasRole(plainObj.role),
+        };
+      });
+
       return {
         formModel,
         getItems,
         hasHidden,
+        getButton,
         handleSubmit,
       };
     },

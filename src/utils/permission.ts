@@ -22,7 +22,7 @@ export const filterModuleByAuths = (auths: string[]): string[] => {
 // 不需要权限过滤的 白名单
 export const WhiteList = ['/v1/user/login', '/v1/user/permission', '/v1/account/info'];
 
-type IAuth = { auth?: string[] };
+type IAuth = { auth?: string[]; role?: number };
 
 export const filterAsyncRoutes = (routes: RouteRecordRaw[], roles: string[]): RouteRecordRaw[] => {
   const res: RouteRecordRaw[] = [];
@@ -43,4 +43,25 @@ export const filterAsyncRoutes = (routes: RouteRecordRaw[], roles: string[]): Ro
     }
   });
   return res;
+};
+
+export const filterRouteByRole = (routes: RouteRecordRaw[], ROLE: number) => {
+  const filterChildrenByRole = (currentRoutes: RouteRecordRaw[]): RouteRecordRaw[] => {
+    const result: RouteRecordRaw[] = [];
+
+    currentRoutes.forEach((route) => {
+      const { role } = (route.meta as IAuth) || {};
+
+      if (role == undefined || role == ROLE) {
+        if (route.children) {
+          route.children = filterChildrenByRole(route.children);
+        }
+        result.push(route);
+      }
+    });
+
+    return result;
+  };
+
+  return filterChildrenByRole(routes);
 };
