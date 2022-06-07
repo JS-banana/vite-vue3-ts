@@ -71,7 +71,10 @@ instance.interceptors.response.use(
   },
 );
 
-const request = <T = any>(config: AxiosRequestConfig, options?: AxiosRequestConfig): Promise<T> => {
+const request = <T = any>(
+  config: AxiosRequestConfig | string,
+  options?: AxiosRequestConfig,
+): Promise<T> => {
   if (typeof config === 'string') {
     if (!options) {
       return instance.request<T, T>({
