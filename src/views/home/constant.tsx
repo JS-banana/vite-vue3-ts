@@ -1,5 +1,5 @@
 import { Tooltip, Tag } from 'ant-design-vue';
-import type { ColumnProps } from 'ant-design-vue/es/table/interface';
+import { ColumnProps } from 'ant-design-vue/lib/table';
 
 export const columns: ColumnProps[] = [
   {
@@ -21,7 +21,7 @@ export const columns: ColumnProps[] = [
   {
     title: '更新日期',
     dataIndex: 'updated_at',
-    slots: { customRender: 'toDateTime' },
+    // slots: { customRender: 'toDateTime' },
     width: 170,
   },
   {
