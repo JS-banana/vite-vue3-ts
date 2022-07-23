@@ -43,7 +43,8 @@ export default defineComponent({
       router.push(e.key);
     };
 
-    const getIcon = (type?: string) => (type ? <Icon type={type} /> : null);
+    const getIcon = (type?: string) =>
+      type ? <Icon type={type} className="sideMenu-icon" /> : null;
 
     // 构建树结构
     const makeTreeDom = (data: MenuDataItem[]): JSX.Element[] => {
