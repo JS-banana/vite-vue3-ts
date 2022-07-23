@@ -12,7 +12,7 @@
     <!-- table -->
     <a-table
       :class="['ant-table-striped', { border: hasBordered }]"
-      :rowClassName="(_, index) => (index % 2 === 1 ? 'table-striped' : null)"
+      :rowClassName="(_, index) => (index % 2 === 1 ? 'table-striped' : '')"
       :dataSource="dataSource"
       :columns="columns"
       :rowKey="(record) => record.id"
@@ -25,41 +25,45 @@
       <!-- <template #[item]="data" v-for="item in Object.keys($slots)" :key="item">
         <slot :name="item" v-bind="data || {}"></slot>
       </template> -->
-      <template #toDate="{ text }">
-        <span>{{ text ? formatDate(text) : '-' }}</span>
-      </template>
-      <template #toDateTime="{ text }">
-        <span>{{ text ? formatDate(text, 'time') : '-' }}</span>
-      </template>
-      <!-- 函数式写法自定义 操作列 -->
-      <template #action="{ record }">
-        <template v-for="(action, index) in getActions" :key="`${index}-${action.label}`">
-          <!-- 气泡确认框 -->
-          <a-popconfirm
-            v-if="action.enable"
-            :title="action?.title"
-            @confirm="action?.onConfirm(record)"
-            @cancel="action?.onCancel(record)"
-          >
-            <a @click.prevent="() => {}" :type="action.type">{{ action.label }}</a>
-          </a-popconfirm>
-          <span v-else-if="!action.permission">——</span>
-          <!-- 按钮 -->
-          <a v-else @click="action?.onClick(record)" :type="action.type">{{ action.label }}</a>
-          <!-- 分割线 -->
-          <a-divider type="vertical" v-if="index < getActions.length - 1" />
+      <template #bodyCell="{ column, text, record }">
+        <template v-if="column.slots?.customRender === 'toDate'">
+          <span>{{ text ? formatDate(text) : '-' }}</span>
+        </template>
+        <template v-if="column.slots?.customRender === 'toDateTime'">
+          <span>{{ text ? formatDate(text, 'time') : '-' }}</span>
+        </template>
+        <!-- 函数式写法自定义 操作列 -->
+        <template v-if="column.slots?.customRender === 'action'">
+          <template v-for="(action, index) in getActions" :key="`${index}-${action.label}`">
+            <!-- 气泡确认框 -->
+            <a-popconfirm
+              v-if="action.enable"
+              :title="action?.title"
+              @confirm="action?.onConfirm(record)"
+              @cancel="action?.onCancel(record)"
+            >
+              <a @click.prevent="() => {}" :type="action.type">{{ action.label }}</a>
+            </a-popconfirm>
+            <span v-else-if="!action.permission">——</span>
+            <!-- 按钮 -->
+            <a v-else @click="action?.onClick(record)" :type="action.type">{{ action.label }}</a>
+            <!-- 分割线 -->
+            <a-divider type="vertical" v-if="index < getActions.length - 1" />
+          </template>
         </template>
       </template>
     </a-table>
   </div>
 </template>
 <script lang="ts">
-  import { TableStateFilters } from 'ant-design-vue/es/table/interface';
-  import moment from 'moment';
+  import { FilterValue } from 'ant-design-vue/es/table/interface';
+  // import moment from 'moment';
+  import dayjs from 'dayjs';
   import { usePagination } from 'vue-request';
   import { formatToDate, formatToDateTime } from '/@/utils/dateUtil';
   import { usePermission } from '/@/hooks/usePermission';
   import { useRole } from '/@/hooks/useRole';
+  import { TablePaginationConfig } from 'ant-design-vue/lib/table/interface';
 
   // const req = () => new Promise((resolve) => resolve({ total: 0, list: [] }));
 
@@ -111,7 +115,11 @@
         showTotal: () => h('span', {}, `共 ${total.value} 条`),
       }));
 
-      const handleTableChange = (pag, filters: TableStateFilters, sorter: any) => {
+      const handleTableChange = (
+        pag: TablePaginationConfig,
+        filters: Record<string, FilterValue | null>,
+        sorter: any,
+      ) => {
         run({
           limit: pag!.pageSize!,
           page: pag?.current,
@@ -149,7 +157,7 @@
         // 日期格式处理
         if (args) {
           Object.keys(args).map((key) => {
-            if (args[key] && moment.isMoment(args[key])) {
+            if (args[key] && dayjs.isDayjs(args[key])) {
               args[key] = formatToDate(args[key]);
             }
           });

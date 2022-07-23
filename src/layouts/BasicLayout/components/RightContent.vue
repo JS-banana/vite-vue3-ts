@@ -1,6 +1,6 @@
 <template>
   <div class="sys-setting">
-    <a-dropdown placement="bottomCenter">
+    <a-dropdown placement="bottom">
       <template #overlay>
         <a-menu :selectedKeys="selectedKeys" class="menu-box">
           <a-menu-item v-for="item in navs" :key="item.path" @click="handleRoute(item?.path)">

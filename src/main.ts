@@ -10,6 +10,7 @@ import { router } from './router';
 import { store } from './store';
 import { setupGlobDirectives } from './directives';
 import './router/permission';
+// import { setupComponents } from './plugin';
 
 const app = createApp(App);
 
@@ -19,6 +20,9 @@ app.use(router);
 
 // Register global directive
 setupGlobDirectives(app);
+
+// Register UI components
+// setupComponents(app);
 
 // 全局属性
 // app.config.globalProperties.AuthEnum = AuthEnum;

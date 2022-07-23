@@ -90,12 +90,15 @@
 - 2022.05.07
   - 添加路由动效`transition`，优化用户体验，并抽离封装`Breadcrumb`组件
   - 添加权限指令`v-role`，调整权限逻辑，`Table`相关组件有所改动（配合该篇文章食用[多级别权限设计思考及实战](https://ssscode.com/pages/ff7971/)）
+- 2022.06.21
+  - `ant-design-vue`升级到`3.x`版本
+  - `dayjs`替换`moment`
 
 ## 计划
 
 - [ ] 主题换肤功能
 - [ ] 引入 `tailwindcss`
-- [ ] `ant-design-vue` 升级到 3.x版本
+- [x] `ant-design-vue` 升级到 3.x版本
 
 ## 感谢star
 

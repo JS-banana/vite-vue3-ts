@@ -1,6 +1,5 @@
 import { Tag } from 'ant-design-vue';
-
-import type { ColumnProps } from 'ant-design-vue/es/table/interface';
+import { ColumnProps } from 'ant-design-vue/es/table';
 
 export const columns: ColumnProps[] = [
   {
