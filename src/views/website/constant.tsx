@@ -38,4 +38,10 @@ export const columns: ColumnProps[] = [
       </a>
     ),
   },
+  {
+    title: '操作',
+    key: 'action',
+    width: 120,
+    // slots: { customRender: 'action' }, // 该用法已废弃
+  },
 ];

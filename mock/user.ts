@@ -17,6 +17,7 @@ export function createFakeUserList() {
       role_name: '管理员角色',
       mobile: 13000000000,
       last_login: '2021-11-11 12:00',
+      role: 1, // 管理
     },
     {
       userId: '2',
@@ -32,6 +33,7 @@ export function createFakeUserList() {
       role_name: '普通用户角色',
       mobile: 18000000000,
       last_login: '2021-11-11 12:12',
+      role: 0, // 普通
     },
   ];
 }

@@ -1,6 +1,6 @@
 {
   "name": "vite-vue3-ts",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "a vite + vue3 + pinia + typescript + ant-design-vue template",
   "keywords": [
@@ -19,7 +19,7 @@
     "url": "git+https://github.com/js-banana/vite-vue3-ts.git"
   },
   "engines": {
-    "node": "^12 || >=14"
+    "node": ">=14"
   },
   "scripts": {
     "bootstrap": "yarn install",
@@ -62,6 +62,7 @@
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "@faker-js/faker": "^7.3.0",
     "@types/lodash-es": "^4.17.5",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
