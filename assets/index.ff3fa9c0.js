@@ -1,1 +1,0 @@
-import{h as s,j as n}from"./index.8a44f0c0.js";import{e as u,aC as p}from"./antdv.f9a5289e.js";var f=u({setup(){const e=n(),o=s();return p(()=>{const{params:t,query:r}=e,{path:a}=t;o.replace({path:"/"+a,query:r})}),()=>""}});export{f as default};
