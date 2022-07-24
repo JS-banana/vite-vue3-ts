@@ -198,6 +198,7 @@ const refresh = () => ELRef.value?.refresh();
   - ✔新增`Table`使用demo，增加各API用法示例，基本涵盖大部分用法
   - ✔新增`fakerjs`数据mock，配合`Mockjs`完善并增强对不同数据类型和场景的模拟
   - ✔完善文档，新增使用说明
+  - [PR](https://github.com/JS-banana/vite-vue3-ts/pull/6)
 
 ## 计划
 
