@@ -73,6 +73,105 @@
 └── vite.config.ts                      // vite
 ```
 
+## 使用说明
+
+1. 克隆本项目
+
+    ```sh
+    git clone https://github.com/JS-banana/vite-vue3-ts.git
+    ```
+
+2. 安装依赖
+
+    ```sh
+    # 推荐使用 pnpm
+    pnpm install
+    # 没有安装的直接安装
+    npm install -g pnpm
+    ```
+
+3. 启动项目
+
+    ```sh
+    pnpm serve
+    # or
+    pnpm dev
+    ```
+
+4. 部署
+
+    ```sh
+    # 检查TS类型然后构建打包
+    pnpm build:check
+    # 跳过检查直接构建打包
+    pnpm build
+    # 预览
+    pnpm preview
+    ```
+
+### 数据模拟
+
+为了实现更多元化和真实数据展示，使用了Mock+fakerjs进行数据模拟，fakerjs的功能极其强大，几乎可以定制任何类型数据，本项目里做了部分演示，源码见`mock/table.ts`
+
+### ant-design-vue 2.x升级到3.x的说明
+
+Table组件：
+
+在2.x版本的时候，Table组件主要通过 `columns`属性，配置字段 `slots: { customRender: 'action' }`进行自定义插槽，做到制定内容的内容，基于此，本项目Table组件封装的内部实现为`<template v-if="column.slots?.customRender === 'action'">`。
+
+但是在3.x之后，官方舍弃了 columns中的`slots`属性，因此该方式需要做出调整，不过，我们的整体思路不变，即，确定一个通用且唯一的key为判断属性即可，以实现对不同内容的区别渲染。
+
+目前的方案打算以columns中的`key` prop属性作为唯一判断的key，Table组件封装内部实现如`<template v-if="column.key === 'action'">`，因此，在columns中默认以`dataIndex`作为渲染key，而`key`作为我们的自定义渲染插槽内容的key。
+
+官网API介绍如下：
+
+| Property  | Description                                                                          | Type            | Default |
+| --------- | ------------------------------------------------------------------------------------ | --------------- | ------- |
+| dataIndex | Display field of the data record, support nest path by string array                  | string/string[] | -       |
+| key       | Unique key of this column, you can ignore this prop if you've set a unique dataIndex | string          | -       |
+
+### Table高级组件的基本用法
+
+> 详情及源码见：./src/components/Table/index.vue
+
+几个核心API：
+
+| Property         | Description                                                                                 | Type                 | Default |
+| ---------------- | ------------------------------------------------------------------------------------------- | -------------------- | ------- |
+| url              | 接受一个异步请求函数，Table内部会自动接管状态（包括发起请求、分页参数等）                   | Promise函数          | -       |
+| columns          | 配置列表项                                                                                  | 与官方API一致        | -       |
+| hiddenFilter     | 是否展示Table上面的筛选项组件                                                               | Boolean              | -       |
+| tableActions     | 自定义action slot（需要在columns中指定`key: 'action'`）                                     | ref/reactive类型数组 | -       |
+| button           | 筛选组件中的独立按钮（如：新增用户）                                                        | ref/reactive类型对象 | -       |
+| items            | 筛选组件中的表单项（如：选择角色、搜索名称，会自动生成查询按钮，并接管到Table中的参数状态） | ref/reactive类型数组 | -       |
+| tableFilterModel | 筛选组件中的表单项数据模型（配合items使用，为了确定key）                                    | ref/reactive类型对象 | -       |
+
+```html
+<template>
+  <Table
+    ref="ELRef"
+    :url="fetchApi.list"
+    :columns="columns"
+    :actions="tableActions"
+    :button="tableFilterButton"
+    :items="tableFilterItems"
+    :model="tableFilterModel"
+  />
+</template>
+```
+
+使用ref调用Table提供的方法API：
+
+| Property | Description                                                                                  | Type           | Default |
+| -------- | -------------------------------------------------------------------------------------------- | -------------- | ------- |
+| refresh  | 不接受参数，使用当前的参数发起更新请求（在新增或删除、修改一条数据后，调用该方法进行列表更新 | ()=>void       | -       |
+| run      | 接受参数，当需要与自定义参数合并时，并发起新的请求，使用此方                                 | (params)=>void | -       |
+
+```js
+const refresh = () => ELRef.value?.refresh();
+// const run = (args) => ELRef.value.run(args); 
+```
+
 ## 效果图
 
 ![vite-vue3-3](https://cdn.jsdelivr.net/gh/JS-banana/images/vuepress/vite-vue3-3.jpg)

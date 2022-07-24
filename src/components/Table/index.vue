@@ -25,15 +25,18 @@
       <!-- <template #[item]="data" v-for="item in Object.keys($slots)" :key="item">
         <slot :name="item" v-bind="data || {}"></slot>
       </template> -->
-      <template #bodyCell="{ column, text, record }">
-        <template v-if="column.slots?.customRender === 'toDate'">
+      <template #bodyCell="{ column, text, index, record }">
+        <template v-if="column.key === 'toIndex'">
+          <span>{{ index + 1 }}</span>
+        </template>
+        <template v-if="column.key === 'toDate'">
           <span>{{ text ? formatDate(text) : '-' }}</span>
         </template>
-        <template v-if="column.slots?.customRender === 'toDateTime'">
+        <template v-if="column.key === 'toDateTime'">
           <span>{{ text ? formatDate(text, 'time') : '-' }}</span>
         </template>
         <!-- 函数式写法自定义 操作列 -->
-        <template v-if="column.slots?.customRender === 'action'">
+        <template v-if="column.key === 'action'">
           <template v-for="(action, index) in getActions" :key="`${index}-${action.label}`">
             <!-- 气泡确认框 -->
             <a-popconfirm
@@ -57,7 +60,6 @@
 </template>
 <script lang="ts">
   import { FilterValue } from 'ant-design-vue/es/table/interface';
-  // import moment from 'moment';
   import dayjs from 'dayjs';
   import { usePagination } from 'vue-request';
   import { formatToDate, formatToDateTime } from '/@/utils/dateUtil';

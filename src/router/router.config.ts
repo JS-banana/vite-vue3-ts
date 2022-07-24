@@ -32,13 +32,23 @@ export const accessRoutes: RouteRecordRaw[] = [
         },
       },
       {
+        path: '/app/table-demo',
+        name: 'table-demo',
+        component: () => import('/@/views/table-demo/index.vue'),
+        meta: {
+          title: '表格用法',
+          keepAlive: true,
+          icon: 'rili',
+        },
+      },
+      {
         path: '/app/others',
         name: 'others',
         component: BlankLayout,
         redirect: '/app/others/about',
         meta: {
           title: '其他菜单',
-          icon: 'xitongrizhi',
+          icon: 'shurumimadenglu',
           auth: ['others'],
         },
         children: [

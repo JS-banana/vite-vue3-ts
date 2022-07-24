@@ -15,13 +15,13 @@ export const columns: ColumnProps[] = [
   {
     title: '创建日期',
     dataIndex: 'created_at',
-    slots: { customRender: 'toDateTime' },
+    // slots: { customRender: 'toDateTime' }, // 该用法已废弃
+    key: 'toDateTime',
     width: 150,
   },
   {
     title: '更新日期',
     dataIndex: 'updated_at',
-    // slots: { customRender: 'toDateTime' },
     width: 170,
   },
   {
