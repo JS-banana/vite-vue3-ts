@@ -192,6 +192,12 @@ const refresh = () => ELRef.value?.refresh();
 - 2022.06.21
   - `ant-design-vue`升级到`3.x`版本
   - `dayjs`替换`moment`
+- 2022.07.24
+  - ✔完善`Table`组件，更新了一些在项目中迭代的优化
+  - ✔优化`Table`相关`API`，遵循`ant-design-vue3.x`官方用法进行迭代
+  - ✔新增`Table`使用demo，增加各API用法示例，基本涵盖大部分用法
+  - ✔新增`fakerjs`数据mock，配合`Mockjs`完善并增强对不同数据类型和场景的模拟
+  - ✔完善文档，新增使用说明
 
 ## 计划
 
