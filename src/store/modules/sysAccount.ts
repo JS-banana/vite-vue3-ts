@@ -6,7 +6,7 @@ import { defineStore } from 'pinia';
 import { store } from '/@/store';
 import fetchApi from '/@/api/sys/account';
 import { ReqAccount, ResAccount } from '/@/api/sys/account/model';
-import { encryptByDES } from '/@/utils/crypto';
+// import { encryptByDES } from '/@/utils/crypto';
 
 type AccountInfoTy = ResAccount | null;
 
@@ -47,9 +47,9 @@ export const useSysAccountStore = defineStore({
      * @description: fetchAccountUpdate
      */
     async fetchAccountUpdate(params: ReqAccount) {
-      if (params.password) {
-        params.password = encryptByDES(params.password);
-      }
+      // if (params.password) {
+      //   params.password = encryptByDES(params.password);
+      // }
       const res = await fetchApi.update(params);
       return res !== undefined;
     },
