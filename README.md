@@ -75,6 +75,12 @@
 
 ## 使用说明
 
+> 简要说明：
+>
+> 随着vite3.x的发布，本项目针对该依赖的相关生态做了升级，详情见分支 [feat-vite3.x](https://github.com/JS-banana/vite-vue3-ts/tree/feat-vite3.x)
+>
+> 需要指出的是vite3.x要求node14.18及以上，详情见 [从 v2 迁移](https://cn.vitejs.dev/guide/migration.html)
+
 1. 克隆本项目
 
     ```sh
@@ -172,6 +178,12 @@ const refresh = () => ELRef.value?.refresh();
 // const run = (args) => ELRef.value.run(args); 
 ```
 
+### 特别说明
+
+`config/vite/plugin/mock.ts` 中的 `configMockPlugin` 方法，属性`prodEnabled` 在生产环境一定要关闭，不然会把大量的mock代码，如fakerjs中的一些源码打包进构建包内。
+
+**本项目这里为了做演示，是手动开启了的，为了能在线上部署的时候查看mock数据，实际开发中一定注意关闭！！！**
+
 ## 效果图
 
 ![vite-vue3-3](https://cdn.jsdelivr.net/gh/JS-banana/images/vuepress/vite-vue3-3.jpg)
@@ -199,6 +211,10 @@ const refresh = () => ELRef.value?.refresh();
   - ✔新增`fakerjs`数据mock，配合`Mockjs`完善并增强对不同数据类型和场景的模拟
   - ✔完善文档，新增使用说明
   - [PR](https://github.com/JS-banana/vite-vue3-ts/pull/6)
+- 2022.07.30
+  - vite相关工具链升级到3.x
+  - 现在你必须使用 Node 14.18+ / 16+ 版本。
+  - 详情见分支 [feat-vite3.x](https://github.com/JS-banana/vite-vue3-ts/tree/feat-vite3.x)
 
 ## 计划
 
