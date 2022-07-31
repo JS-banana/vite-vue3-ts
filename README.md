@@ -8,6 +8,8 @@
 
 相关文章：<https://juejin.cn/post/7041188884864040991>
 
+本项目相关改动及更新见【[更新记录](#更新记录)↓↓↓】
+
 ## 特性
 
 - ✨脚手架工具：高效、快速的 **Vite**
@@ -200,9 +202,11 @@ const refresh = () => ELRef.value?.refresh();
   - 路由模式由 hash调整为 history
 - 2022.05.07
   - 添加路由动效`transition`，优化用户体验，并抽离封装`Breadcrumb`组件
-  - 添加权限指令`v-role`，调整权限逻辑，`Table`相关组件有所改动（配合该篇文章食用[多级别权限设计思考及实战](https://ssscode.com/pages/ff7971/)）
+  - 添加权限指令`v-role`，调整权限逻辑，目前权限指令包括`v-role`/`v-auth`
+  - `Table`相关组件有所改动，同步迭代了一些功能点，包括优化项
+  - 建议配合该篇文章食用[多级别权限设计思考及实战](https://ssscode.com/pages/ff7971/)
 - 2022.06.21
-  - `ant-design-vue`升级到`3.x`版本
+  - `ant-design-vue`升级到`3.x`版本，同步更新改动了一些API
   - `dayjs`替换`moment`
 - 2022.07.24
   - ✔完善`Table`组件，更新了一些在项目中迭代的优化
@@ -215,12 +219,14 @@ const refresh = () => ELRef.value?.refresh();
   - vite相关工具链升级到3.x
   - 现在你必须使用 Node 14.18+ / 16+ 版本。
   - 详情见分支 [feat-vite3.x](https://github.com/JS-banana/vite-vue3-ts/tree/feat-vite3.x)
+  - 原有的vite2.x版本见分支 [feat-vite2.x](https://github.com/JS-banana/vite-vue3-ts/tree/feat-vite2.x)
+  - 现在master主分支为最新的vite3.x版本
 
 ## 计划
 
+- [x] `ant-design-vue` 升级到 3.x版本
 - [ ] 主题换肤功能
 - [ ] 引入 `tailwindcss`
-- [x] `ant-design-vue` 升级到 3.x版本
 
 ## 感谢star
 
