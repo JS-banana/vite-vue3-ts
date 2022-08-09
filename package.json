@@ -22,7 +22,7 @@
     "node": ">=14"
   },
   "scripts": {
-    "bootstrap": "yarn install",
+    "bootstrap": "pnpm install",
     "check": "vue-tsc --noEmit",
     "serve": "npm run dev",
     "dev": "vite",
@@ -31,14 +31,14 @@
     "build": "vite build",
     "build:check": "vue-tsc --noEmit && vite build",
     "build:github": "vite build --base=/vite-vue3-ts/",
-    "build:no-cache": "yarn clean:cache && npm run build",
+    "build:no-cache": "pnpm clean:cache && npm run build",
     "preview": "vite preview",
     "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
     "clean:lib": "rimraf node_modules",
     "lint:eslint": "eslint --cache --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix",
     "lint:prettier": "prettier --write  \"src/**/*.{js,json,tsx,css,less,scss,vue,html,md}\"",
     "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
-    "reinstall": "rimraf yarn.lock && rimraf package.lock.json && rimraf node_modules && npm run bootstrap",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s && npx prettier CHANGELOG.md --write && git add CHANGELOG.md",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -66,6 +66,7 @@
     "@vitejs/plugin-vue": "^3.0.1",
     "@vitejs/plugin-vue-jsx": "^2.0.0",
     "autoprefixer": "^10.4.0",
+    "conventional-changelog-cli": "^2.2.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-define-config": "~1.0.9",
