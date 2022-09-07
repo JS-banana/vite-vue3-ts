@@ -228,6 +228,18 @@ const refresh = () => ELRef.value?.refresh();
 - [ ] 主题换肤功能
 - [ ] 引入 `tailwindcss`
 
+## 交流
+
+你可以关注我公众号（前端小帅），然后加我微信交流，或者直接添加交流群，一起沟通学习~
+
+<table>
+  <tr>
+    <td valign="top">
+      <img height="160" alt="公众号：前端小帅" src="https://cdn.jsdelivr.net/gh/JS-banana/images/vuepress/4.png" />
+    </td>
+  </tr>
+</table>
+
 ## 感谢star
 
 [![Stargazers over time](https://starchart.cc/JS-banana/vite-vue3-ts.svg)](https://starchart.cc/JS-banana/vite-vue3-ts)
