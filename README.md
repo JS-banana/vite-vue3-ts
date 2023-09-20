@@ -221,6 +221,10 @@ const refresh = () => ELRef.value?.refresh();
   - 详情见分支 [feat-vite3.x](https://github.com/JS-banana/vite-vue3-ts/tree/feat-vite3.x)
   - 原有的vite2.x版本见分支 [feat-vite2.x](https://github.com/JS-banana/vite-vue3-ts/tree/feat-vite2.x)
   - 现在master主分支为最新的vite3.x版本
+- 2023.09.20
+  - vite相关工具链升级到4.x
+  - 详情见分支 feat-vite4.x
+  - 现在master主分支为最新的vite4.x版本
 
 ## 计划
 
