@@ -24,7 +24,7 @@ jobs:
           node-version: 16
 
       - name: build
-        run: pnpm install --no-frozen-lockfile && pnpm run build:github # 部署至GitHub需要配置，base路径
+        run: pnpm install && pnpm run build:github # 部署至GitHub需要配置，base路径
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
