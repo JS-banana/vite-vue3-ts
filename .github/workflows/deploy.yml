@@ -9,11 +9,20 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm' # 配置缓存，优化安装性能
+
+      # 2. 设置pnpm包管理器
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
 
       - name: build
-        run: npm install && npm run build:github # 部署至GitHub需要配置，base路径
+        run: pnpm install && pnpm run build:github # 部署至GitHub需要配置，base路径
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
